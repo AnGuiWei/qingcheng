@@ -1,0 +1,516 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="java" />
+
+
+<link rel="canonical" href="http://example.com/2023/12/07/%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98/">
+
+
+
+  <title>
+集合，io流 - java |
+Yume Shoka = Hexo</title>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">集合，io流
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-12-07 20:19:34">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-12-07T20:19:34+08:00">2023-12-07</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeudstjqj20zk0m8k3r.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclxxcb6rj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeun65urj20zk0m81ii.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipesng5oej20zk0m87d4.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipew28b65j20zk0m8hdt.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/java/" itemprop="item" rel="index" title="In java"><span itemprop="name">java</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/07/%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h3 id="1-集合"><a href="#1-集合" class="headerlink" title="1.集合"></a>1.集合</h3><hr>
+<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><h3 id="1-ArrayList集合"><a href="#1-ArrayList集合" class="headerlink" title="1.ArrayList集合"></a>1.ArrayList集合</h3><p>容量，扩容，优点，数组优化</p>
+<h3 id="2-Linklist集合"><a href="#2-Linklist集合" class="headerlink" title="2.Linklist集合"></a>2.Linklist集合</h3><p> 链表，优点，容量</p>
+<h3 id="3-vector"><a href="#3-vector" class="headerlink" title="3.vector"></a>3.vector</h3><p>容量，扩容，优点</p>
+<h3 id="4-list集合"><a href="#4-list集合" class="headerlink" title="4.list集合"></a>4.list集合</h3><p>优点</p>
+<h3 id="5-set集合"><a href="#5-set集合" class="headerlink" title="5.set集合"></a>5.set集合</h3><p>优点</p>
+<h3 id="6-HashSet集合"><a href="#6-HashSet集合" class="headerlink" title="6.HashSet集合"></a>6.HashSet集合</h3><p>哈希表</p>
+<h3 id="7-TreeSet集合"><a href="#7-TreeSet集合" class="headerlink" title="7.TreeSet集合"></a>7.TreeSet集合</h3><p>二叉树</p>
+<h3 id="8-hashMap集合"><a href="#8-hashMap集合" class="headerlink" title="8.hashMap集合"></a>8.hashMap集合</h3><p>哈希表，优点，jdk8红黑树 ，容量，装载因子，扩容</p>
+<h3 id="9-hashTable集合"><a href="#9-hashTable集合" class="headerlink" title="9.hashTable集合"></a>9.hashTable集合</h3><p>key和value不能为null，容量，加载因子，扩容</p>
+<h3 id="10-properties集合"><a href="#10-properties集合" class="headerlink" title="10.properties集合"></a>10.properties集合</h3><p>继承hashtable集合，key和value都是String类型</p>
+<h3 id="11-sortedMap集合"><a href="#11-sortedMap集合" class="headerlink" title="11.sortedMap集合"></a>11.sortedMap集合</h3><p>特点，Treemap集合</p>
+<h3 id="12-泛型"><a href="#12-泛型" class="headerlink" title="12.泛型"></a>12.泛型</h3><p>什么是泛型，泛型的好处，缺点，jdk8之后钻石表达式，通配符，类型擦除，如何使用继承，泛型方法是什么，泛型和数组区别，泛型的类型边界，</p>
+<h1 id="io流"><a href="#io流" class="headerlink" title="io流"></a>io流</h1><h3 id="1-分类"><a href="#1-分类" class="headerlink" title="1.分类"></a>1.分类</h3><p>方向：输入流，输出流</p>
+<p>数据方式：字节流，字符流</p>
+<h3 id="2-输出流都实现了java-io-Flushable接口，都有flush方法"><a href="#2-输出流都实现了java-io-Flushable接口，都有flush方法" class="headerlink" title="2.输出流都实现了java.io.Flushable接口，都有flush方法"></a>2.输出流都实现了java.io.Flushable接口，都有flush方法</h3><p>作用</p>
+<h3 id="3-什么是io流"><a href="#3-什么是io流" class="headerlink" title="3.什么是io流"></a>3.什么是io流</h3><h3 id="4-字节流和字符流如何转换"><a href="#4-字节流和字符流如何转换" class="headerlink" title="4.字节流和字符流如何转换"></a>4.字节流和字符流如何转换</h3><h3 id="5-缓冲流"><a href="#5-缓冲流" class="headerlink" title="5.缓冲流"></a>5.缓冲流</h3><p>什么是缓冲流？有什么作用</p>
+<h3 id="6-NIO流"><a href="#6-NIO流" class="headerlink" title="6.NIO流"></a>6.NIO流</h3><h3 id="7-处理大文件的读写操作"><a href="#7-处理大文件的读写操作" class="headerlink" title="7.处理大文件的读写操作"></a>7.处理大文件的读写操作</h3><p>用缓冲流或者NIO</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h4 id="-1"><a href="#-1" class="headerlink" title=""></a></h4>
+      <div class="tags">
+          <a href="/tags/java/" rel="tag"><i class="ic i-tag"></i> java</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-12-07 20:21:33" itemprop="dateModified" datetime="2023-12-07T20:21:33+08:00">2023-12-07</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2023/12/07/%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98/" title="集合，io流">http://example.com/2023/12/07/面试问题/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/12/05/hello-world/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicm0n457cj20zk0m8e81.jpg" title="Hello World">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Hello World</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/05/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipetlbztpj20zk0m84qp.jpg" title="设计模式">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>设计模式</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%9B%86%E5%90%88"><span class="toc-number">1.</span> <span class="toc-text">1.集合</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9B%86%E5%90%88"><span class="toc-number"></span> <span class="toc-text">集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ArrayList%E9%9B%86%E5%90%88"><span class="toc-number">1.</span> <span class="toc-text">1.ArrayList集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Linklist%E9%9B%86%E5%90%88"><span class="toc-number">2.</span> <span class="toc-text">2.Linklist集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-vector"><span class="toc-number">3.</span> <span class="toc-text">3.vector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-list%E9%9B%86%E5%90%88"><span class="toc-number">4.</span> <span class="toc-text">4.list集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-set%E9%9B%86%E5%90%88"><span class="toc-number">5.</span> <span class="toc-text">5.set集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-HashSet%E9%9B%86%E5%90%88"><span class="toc-number">6.</span> <span class="toc-text">6.HashSet集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-TreeSet%E9%9B%86%E5%90%88"><span class="toc-number">7.</span> <span class="toc-text">7.TreeSet集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-hashMap%E9%9B%86%E5%90%88"><span class="toc-number">8.</span> <span class="toc-text">8.hashMap集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-hashTable%E9%9B%86%E5%90%88"><span class="toc-number">9.</span> <span class="toc-text">9.hashTable集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-properties%E9%9B%86%E5%90%88"><span class="toc-number">10.</span> <span class="toc-text">10.properties集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-sortedMap%E9%9B%86%E5%90%88"><span class="toc-number">11.</span> <span class="toc-text">11.sortedMap集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E6%B3%9B%E5%9E%8B"><span class="toc-number">12.</span> <span class="toc-text">12.泛型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#io%E6%B5%81"><span class="toc-number"></span> <span class="toc-text">io流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%86%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">1.分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BE%93%E5%87%BA%E6%B5%81%E9%83%BD%E5%AE%9E%E7%8E%B0%E4%BA%86java-io-Flushable%E6%8E%A5%E5%8F%A3%EF%BC%8C%E9%83%BD%E6%9C%89flush%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">2.输出流都实现了java.io.Flushable接口，都有flush方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BB%80%E4%B9%88%E6%98%AFio%E6%B5%81"><span class="toc-number">3.</span> <span class="toc-text">3.什么是io流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%AD%97%E8%8A%82%E6%B5%81%E5%92%8C%E5%AD%97%E7%AC%A6%E6%B5%81%E5%A6%82%E4%BD%95%E8%BD%AC%E6%8D%A2"><span class="toc-number">4.</span> <span class="toc-text">4.字节流和字符流如何转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E7%BC%93%E5%86%B2%E6%B5%81"><span class="toc-number">5.</span> <span class="toc-text">5.缓冲流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-NIO%E6%B5%81"><span class="toc-number">6.</span> <span class="toc-text">6.NIO流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%A4%84%E7%90%86%E5%A4%A7%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C"><span class="toc-number">7.</span> <span class="toc-text">7.处理大文件的读写操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">8.</span> <span class="toc-text"></span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#-1"><span class="toc-number">8.1.</span> <span class="toc-text"></span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2020/03/27/%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%8C%BA%E5%88%AB/" rel="bookmark" title="接口和抽象类区别">接口和抽象类区别</a></li><li><a href="/2020/05/25/jdk8%E6%96%B0%E7%89%B9%E6%80%A7/" rel="bookmark" title="jdk8的新特性">jdk8的新特性</a></li><li class="active"><a href="/2023/12/07/%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98/" rel="bookmark" title="集合，io流">集合，io流</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">22</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">20</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">20</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/12/05/hello-world/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/05/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%90%8E%E7%AB%AF/" title="In 后端">后端</a>
+</div>
+
+    <span><a href="/2022/07/26/%E5%90%8E%E7%AB%AF%E8%B7%AF%E7%BA%BF/" title="java路线">java路线</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/spring/" title="In spring">spring</a>
+</div>
+
+    <span><a href="/2022/08/17/spring/" title="Spring">Spring</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/mysql/" title="In mysql">mysql</a>
+</div>
+
+    <span><a href="/2020/05/08/%E5%BC%80%E5%90%AFMySQL%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90/" title="开启mysql访问权限">开启mysql访问权限</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" title="In 数据库">数据库</a>
+</div>
+
+    <span><a href="/2022/03/21/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%8C%BA%E5%88%AB/" title="开启mysql访问权限">开启mysql访问权限</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Zookeeper/" title="In Zookeeper">Zookeeper</a>
+</div>
+
+    <span><a href="/2022/11/04/zookeeper/" title="Zookeeper入门">Zookeeper入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Hashmap/" title="In Hashmap">Hashmap</a>
+</div>
+
+    <span><a href="/2020/03/10/Hashmap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="Hashmap底层数据结构">Hashmap底层数据结构</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="In 计算机网络">计算机网络</a>
+</div>
+
+    <span><a href="/2019/05/05/TCP%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/" title="tcp三次握手">tcp三次握手</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/vue/" title="In vue">vue</a>
+</div>
+
+    <span><a href="/2022/03/11/vue%E4%BE%9D%E8%B5%96%E5%AF%BC%E5%85%A5%E4%BD%BF%E7%94%A8/" title="vue依赖导入使用">vue依赖导入使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/hexo/" title="In hexo">hexo</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/hexo/%E5%8D%9A%E5%AE%A2/" title="In 博客">博客</a>
+</div>
+
+    <span><a href="/2021/06/28/0%E4%BB%A3%E7%A0%81%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/" title="0代码创建博客">0代码创建博客</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" title="In 内网穿透">内网穿透</a>
+</div>
+
+    <span><a href="/2021/04/20/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8Fngrok%E4%BD%BF%E7%94%A8/" title="内网穿透ngrok的使用">内网穿透ngrok的使用</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/12/07/面试问题/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
